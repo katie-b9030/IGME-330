@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Greeter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        #input-firstname, #input-lastname, p {
+            font-size: 3em;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        button {
+            height: 50px;
+            width: 150px;
+            font-size: 14pt;
+        }
+        body * {
+            margin: 10px;
+        }
+        @media only screen and (min-width: 1024px){
+            body{
+                background-color: gold;
+                padding: 100px;
+            }
+        }
+    </style>
+    <script>
+        "use strict";
+
+        /**
+         * Sets output statement when a button is clicked
+         */
+        let greet = (greeting) => {
+            let firstName = document.querySelector("#input-firstname").value;
+            let lastName = document.querySelector("#input-lastname").value;
+            if (!firstName.trim()) firstName = "Peter";
+            if (!lastName.trim()) lastName = "Parker";
+            // sets uppercase if shoutify is checked
+            if (document.querySelector("#checkbox").checked){
+                greeting = greeting.toUpperCase();
+                firstName = firstName.toUpperCase();
+                lastName = lastName.toUpperCase();
+            }
+            document.querySelector("#output").innerHTML = `${greeting} ${firstName} ${lastName}!`
+
+        }
+
+        /**
+         * Sets up the page once the body is loaded
+         */
+        let init = () => {
+            const button = document.querySelector("#btn-hello");
+            const button2 = document.querySelector("#btn-goodbye");
+            button.addEventListener("click", () => {greet("Hello")});
+            button2.addEventListener("click", () => {greet("Goodbye")});
+            document.querySelector("#output").style.color = "gold";
+            document.querySelector("#output").style.backgroundColor = "#3A3B3C";
+        }
+
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <button id="btn-hello">Say Hello!</button>
+    <button id="btn-goodbye">Say Goodbye!</button>
+    <input id="checkbox" type="checkbox">Shoutify!</input>
+    <hr>
+    <input id="input-firstname" placeholder="Type in your first name">
+    <input id="input-lastname" placeholder="Type in your last name">
+    <p id="output">???</p>
+
+
+</body>
+
+</html>
