@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Greeter</title>
+    <style>
+      *{font-size:1.5em;}
+
+      button {
+        width: 150px;
+        height: 50px;
+        padding: 100px;
+      }
+
+    </style>
+    <script>
+        "use strict";
+    
+        window.onload = init;
+
+        // 1 - get a reference to the button
+        let button = document.querySelector("button");
+        // 2 - add a click event to button that calls a `sayHello` function
+        button.onclick = sayHello();
+        // 3 - create a `sayHello()` function
+        function sayHello() {
+            // 3A - get name of person from the <input>
+            let firstName = document.querySelector("#input-firstname").value;
+            firstName = firstName.trim() || "Peter";
+
+            let lastName = document.querySelector("#input-lirstname").value;
+            lastName = lastName.trim() || "Parker";
+            // 3B - get a reference to the #output <p>
+            let output = document.querySelector("#output");
+            // 3C - update HTML of #output <p>
+            output.innerHTML = `Hello ${firstName} ${lastName}`;
+        }
+
+        function addThem(a, b){
+            return a + b;
+        }
+        Console.Log(addThem(3, 4));
+
+        function DoThis(){
+            Console.Log("Log end:", a, 1);
+            if (true){
+                if (true){
+                    for (var i=0; i<5; i++){
+                        var a=10;
+                    }
+                }
+            }
+        }
+
+        function sayGoodbye(){
+            let firstName = document.querySelector("#input-firstname").value;
+            firstName = firstName.trim() || "Peter";
+            let lastName = document.querySelector("#input-lirstname").value;
+            lastName = lastName.trim() || "Parker";
+            let output = document.querySelector("#output");
+            output.innerHTML = `Goodbye ${firstName} ${lastName}`;
+        }
+    
+    </script>
+  </head>
+<body>
+  <button>Click Me!</button>
+  <input id="input-firstname" placeholder="First Name">
+  <input id="input-firstname" placeholder="Last Name">
+  <p id="output">???</p>
+</body>
+</html>

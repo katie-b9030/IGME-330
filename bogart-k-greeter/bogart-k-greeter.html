@@ -1,72 +1,96 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Greeter</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <style>
-      *{font-size:1.5em;}
+        * {
+            font-size: 1.5em;
+            font-family: "Lemon", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
 
-      button {
-        width: 150px;
-        height: 50px;
-        padding: 100px;
-      }
-
+        button {
+            height: 50px;
+            width: 100px;
+            font-size: 14pt;
+        }
     </style>
     <script>
         "use strict";
-    
-        window.onload = init;
 
-        // 1 - get a reference to the button
-        let button = document.querySelector("button");
-        // 2 - add a click event to button that calls a `sayHello` function
-        button.onclick = sayHello();
-        // 3 - create a `sayHello()` function
-        function sayHello() {
-            // 3A - get name of person from the <input>
-            let firstName = document.querySelector("#input-firstname").value;
-            firstName = firstName.trim() || "Peter";
+        let a = 10;
 
-            let lastName = document.querySelector("#input-lirstname").value;
-            lastName = lastName.trim() || "Parker";
-            // 3B - get a reference to the #output <p>
-            let output = document.querySelector("#output");
-            // 3C - update HTML of #output <p>
-            output.innerHTML = `Hello ${firstName} ${lastName}`;
-        }
-
-        function addThem(a, b){
+        function addThem(a, b) {
             return a + b;
         }
-        Console.Log(addThem(3, 4));
 
-        function DoThis(){
-            Console.Log("Log end:", a, 1);
-            if (true){
-                if (true){
-                    for (var i=0; i<5; i++){
-                        var a=10;
+        console.log(addThem(3, 4));
+
+
+        function doStuff() {
+            console.log("log end:", a, i);
+            if (true) {
+                if (true) {
+                    for (let i = 0; i < 10; i++) {
+                        let a = 10;
                     }
                 }
             }
         }
 
-        function sayGoodbye(){
+        //console.log("log end:", a, i);
+        // 1 - get a reference to the button
+        // 2 - add a click event to button that calls a `sayHello` function
+        // 3 - create a `sayHello()` function
+        // 3A - get name of person from the <input>
+        // 3B - get a reference to the #output <p>
+        // 3C - update HTML of #output <p>
+
+        function sayHello() {
             let firstName = document.querySelector("#input-firstname").value;
-            firstName = firstName.trim() || "Peter";
-            let lastName = document.querySelector("#input-lirstname").value;
-            lastName = lastName.trim() || "Parker";
-            let output = document.querySelector("#output");
-            output.innerHTML = `Goodbye ${firstName} ${lastName}`;
+            const lastName = document.querySelector("#input-lastname").value;
+            if (!firstName.trim()) firstName = "Peter";
+            // document.querySelector("#output").innerHTML = "Hello " + firstName +" "+lastName;
+            document.querySelector("#output").innerHTML = `Hello ${firstName} ${lastName}!`
         }
-    
+
+        function greet(greeting) {
+            let firstName = document.querySelector("#input-firstname").value;
+            const lastName = document.querySelector("#input-lastname").value;
+            if (!firstName.trim()) firstName = "Peter";
+            document.querySelector("#output").innerHTML = `${greeting} ${firstName} ${lastName}!`
+        }
+
+        function init() {
+            const button = document.querySelector("button");
+            const button2 = document.querySelector("#btn-Click2");
+            // button.onclick = sayHello;
+            button.addEventListener("click", () => {greet("Hello")});
+            button2.addEventListener("click", () => {greet("Bye")});
+            document.querySelector("#output").style.color = "red";
+            document.querySelector("#output").style.backgroundColor = "yellow";
+
+        }
+
+        window.onload = init;
     </script>
-  </head>
+</head>
+
 <body>
-  <button>Click Me!</button>
-  <input id="input-firstname" placeholder="First Name">
-  <input id="input-firstname" placeholder="Last Name">
-  <p id="output">???</p>
+    <button>Click Me!</button>
+    <button id="btn-Click2">Click Me2!</button>
+    <input id="input-firstname" placeholder="Type in your first name">
+    <input id="input-lastname" placeholder="Type in your last name">
+    <p id="output">???</p>
+
+
 </body>
+
 </html>
