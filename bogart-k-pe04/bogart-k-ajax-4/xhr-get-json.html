@@ -33,7 +33,6 @@
             const catNames = json["catnames"];
             const birdNames = json["birdnames"];
 
-
             const dogHtml = `<ol>${dogNames.map(w => `<li>${w}</li>`).join("")}</ol>`;
             const catHtml = `<ol>${catNames.map(w => `<li>${w}</li>`).join("")}</ol>`;
             const birdHtml = `<ol>${birdNames.map(w => `<li>${w}</li>`).join("")}</ol>`;
@@ -53,37 +52,6 @@
         xhr.open("GET", url);
         xhr.send();
     }
-    // function loadXmlXHR() {
-    //     const url = "data/pet-names.json"
-    //     const xhr = new XMLHttpRequest();
-    //     xhr.onload = (e) => {
-    //         console.log(`In onload - HTTP Status Code = ${e.target.status}`);
-    //         const string = e.target.responseText;
-    //         const json = JSON.parse(string);
-    //         const dogNames = json["dognames"];
-    //         const catNames = json["catnames"];
-    //         const birdNames = json["birdnames"];
-
-
-    //         const dogHtml = `<ol>${dogNames.map(w => `<li>${w}</li>`).join("")}</ol>`;
-    //         const catHtml = `<ol>${catNames.map(w => `<li>${w}</li>`).join("")}</ol>`;
-    //         const birdHtml = `<ol>${birdNames.map(w => `<li>${w}</li>`).join("")}</ol>`;
-
-    //         const html = `
-    //             <h3>Dog Names</h3>
-    //             ${dogHtml}
-    //             <h3>Cat Names</h3>
-    //             ${catHtml}
-    //             <h3>Bird Names</h3>
-    //             ${birdHtml}
-    //         `;
-
-    //         document.querySelector("#output").innerHTML = html;
-    //     };
-    //     xhr.onerror = e => console.log(`In onerror - HTTP Status Code = ${e.target.status}`);
-    //     xhr.open("GET", url);
-    //     xhr.send();
-    // }
 </script>
 </body>
 </html>
