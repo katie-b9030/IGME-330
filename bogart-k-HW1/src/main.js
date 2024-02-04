@@ -1,26 +1,61 @@
-"use strict";
-        
-const words1 = ["Acute", "Aft", "Anti-matter", "Bipolar", "Cargo", "Command", "Communication", "Computer", "Deuterium", "Dorsal", "Emergency", "Engineering", "Environmental", "Flight", "Fore", "Guidance", "Heat", "Impulse", "Increased", "Inertial", "Infinite", "Ionizing", "Isolinear", "Lateral", "Linear", "Matter", "Medical", "Navigational", "Optical", "Optimal", "Optional", "Personal", "Personnel", "Phased", "Reduced", "Science", "Ship's", "Shuttlecraft", "Structural", "Subspace", "Transporter", "Ventral"];
-        
-const words2 = ["Propulsion", "Dissipation", "Sensor", "Improbability", "Buffer", "Graviton", "Replicator", "Matter", "Anti-matter", "Organic", "Power", "Silicon", "Holographic", "Transient", "Integrity", "Plasma", "Fusion", "Control", "Access", "Auto", "Destruct", "Isolinear", "Transwarp", "Energy", "Medical", "Environmental", "Coil", "Impulse", "Warp", "Phaser", "Operating", "Photon", "Deflector", "Integrity", "Control", "Bridge", "Dampening", "Display", "Beam", "Quantum", "Baseline", "Input"];
-        
-const words3 = ["Chamber", "Interface", "Coil", "Polymer", "Biosphere", "Platform", "Thruster", "Deflector", "Replicator", "Tricorder", "Operation", "Array", "Matrix", "Grid", "Sensor", "Mode", "Panel", "Storage", "Conduit", "Pod", "Hatch", "Regulator", "Display", "Inverter", "Spectrum", "Generator", "Cloud", "Field", "Terminal", "Module", "Procedure", "System", "Diagnostic", "Device", "Beam", "Probe", "Bank", "Tie-In", "Facility", "Bay", "Indicator", "Cell"];
+import { getRandomWord } from "./utils.js";
 
+let words1, words2, words3;
 let word1, word2, word3, babble;
 
-//console.log(words1[0]);
-createBabble();
-
-function createBabble(){
-    function getRandomWord(array){
-        return array[Math.floor(Math.random() * array.length)];
+/**
+ * parses values from a json file
+ * 
+ * @param {function} callback - parses json
+ */
+const loadBabble = (callback) => {
+    const url = "data/babble-data.json"
+    const xhr = new XMLHttpRequest();
+    xhr.onload = (e) => {
+        console.log(`In onload - HTTP Status Code = ${e.target.status}`);
+        const string = e.target.responseText;
+        callback(string);
     }
-    word1 = getRandomWord(words1);
-    word2 = getRandomWord(words2);
-    word3 = getRandomWord(words3);
-
-    babble = `${word1} ${word2} ${word3}`;
-
-    document.querySelector("#output").innerHTML = babble;
+    xhr.onerror = e => console.log(`In onerror - HTTP Status Code = ${e.target.status}`);
+    xhr.open("GET", url);
+    xhr.send();
 }
-document.querySelector("#myButton").onclick = createBabble;
+
+/**
+ * creates randomly generated babble
+ * 
+ * @param {int} n - number of babbles to generate
+ * @return {string} n lines of babble
+ */
+const createBabble = (num) => {
+    document.querySelector("#output").innerHTML = "";
+    for (let i = 0; i < num; i ++) {
+        word1 = getRandomWord(words1);
+        word2 = getRandomWord(words2);
+        word3 = getRandomWord(words3);
+
+        babble = `<p>${word1} ${word2} ${word3}</p>`;
+
+        document.querySelector("#output").innerHTML += babble;
+    }
+}
+
+/**
+ * parses json, assigns arrays, initializes button calls, and creates starting babble
+ * 
+ * @param {string} text - json to be parsed
+ */
+const babbleLoaded = (text) => {
+    const json = JSON.parse(text);
+    words1 = json["words1"];
+    words2 = json["words2"];
+    words3 = json["words3"];
+
+    document.querySelector("#less-babble").onclick = () => createBabble(1);
+    document.querySelector("#more-babble").onclick = () => createBabble(5);
+
+    createBabble(1);
+}
+
+loadBabble(babbleLoaded);
+
