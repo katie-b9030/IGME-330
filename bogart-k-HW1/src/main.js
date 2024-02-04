@@ -46,7 +46,14 @@ const createBabble = (num) => {
  * @param {string} text - json to be parsed
  */
 const babbleLoaded = (text) => {
-    const json = JSON.parse(text);
+    try{
+        const json = JSON.parse(text);
+    }
+    catch{
+        console.log("Something went wrong!");
+        return;
+    }
+
     words1 = json["words1"];
     words2 = json["words2"];
     words3 = json["words3"];
