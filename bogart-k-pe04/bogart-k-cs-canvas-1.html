@@ -34,14 +34,11 @@
 			ctx.fillRect(20,20,600,440);
 
             // IV Demo Rect
-            ctx.strokeStyle = "purple";
-            ctx.fillStyle = "darkgray";
-            ctx.lineWidth = 20;
-            ctx.beginPath();
-            ctx.rect(120, 120, 400, 300);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(120, 120, 400, 300);
+            ctx.strokeStyle = "magenta";
+            ctx.lineWidth = 10;
+            ctx.strokeRect(120, 120, 400, 300);
 
             // V Check it off
             
@@ -50,14 +47,11 @@
             ctx.fillRect(250, 400, 200, 125);
 
             // stroke rect
+            ctx.fillStyle = "purple";
+            ctx.fillRect(10, 30, 100, 350);
             ctx.strokeStyle = "green";
-            ctx.fillStyle = "white";
-            ctx.lineWidth = 10;
-            ctx.beginPath();
-            ctx.rect(40, 70, 50, 200);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
+            ctx.lineWidth = 20;
+            ctx.strokeRect(10, 30, 100, 350);
         //     ctx.strokeStyle = "green";
         //     ctx.lineWidth = 10;
         //     ctx.strokeRect(40, 70, 50, 200);

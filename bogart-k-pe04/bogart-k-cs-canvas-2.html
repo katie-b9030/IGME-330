@@ -34,8 +34,8 @@
 			ctx.fillRect(20,20,600,440);
 
             // IV Demo Rect
-            ctx.strokeStyle = "purple";
-            ctx.fillStyle = "darkgray";
+            ctx.strokeStyle = "magenta";
+            ctx.fillStyle = "yellow";
             ctx.lineWidth = 20;
             ctx.beginPath();
             ctx.rect(120, 120, 400, 300);
@@ -50,17 +50,77 @@
             ctx.fillRect(250, 400, 200, 125);
 
             // stroke rect
+            ctx.fillStyle = "purple";
+            ctx.fillRect(10, 30, 100, 350);
             ctx.strokeStyle = "green";
-            ctx.fillStyle = "white";
-            ctx.lineWidth = 10;
-            ctx.beginPath();
-            ctx.rect(40, 70, 50, 200);
+            ctx.lineWidth = 20;
+            ctx.strokeRect(10, 30, 100, 350);
+			
+			// CANVAS 2 ASSIGNMENT
+
+			// II Demo
+
+			// lines
+			ctx.strokeStyle = "magenta";
+
+			ctx.beginPath();
+            ctx.moveTo(20, 20);
+			ctx.lineTo(640, 460);
             ctx.closePath();
-            ctx.fill();
+			ctx.lineWidth = 5;
             ctx.stroke();
-        //     ctx.strokeStyle = "green";
-        //     ctx.lineWidth = 10;
-        //     ctx.strokeRect(40, 70, 50, 200);
+
+			ctx.beginPath();
+            ctx.moveTo(640, 20);
+			ctx.lineTo(20, 460);
+            ctx.closePath();
+            ctx.stroke();
+
+			// circle
+			ctx.fillStyle = "gray";
+			ctx.strokeStyle = "orange";
+			ctx.beginPath();
+			ctx.arc(320, 240, 50, 0, Math.PI*2, false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			// semicircle
+			ctx.fillStyle = "white";
+			ctx.strokeStyle = "teal";
+			ctx.beginPath();
+			ctx.arc(320, 240, 20, 0, Math.PI, false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			// III Check off
+
+			// circle
+			ctx.fillStyle = "black";
+			ctx.strokeStyle = "brown";
+			ctx.lineWidth = 2;
+			ctx.beginPath();
+			ctx.arc(300, 220, 5, 0, Math.PI*2, false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			// circle
+			ctx.beginPath();
+			ctx.arc(340, 220, 5, 0, Math.PI*2, false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+
+			//line
+			ctx.strokeStyle = "lightblue";
+			ctx.lineWidth = 20;
+			ctx.beginPath();
+            ctx.moveTo(20, 80);
+			ctx.lineTo(620, 80);
+            ctx.closePath();
+            ctx.stroke();
 		}
 	</script>
 </head>
