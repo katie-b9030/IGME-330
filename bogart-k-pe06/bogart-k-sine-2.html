@@ -34,6 +34,24 @@
             ctx.globalAlpha = 1/fps;
             ctx.fillRect(0, 0, canvasWidth, canvasHeight);
             ctx.restore();
+            x += 10;
+            angle += .3;
+            y = canvasHeight/2 + Math.sin(angle) * 100;
+            drawCircle(ctx, x, y, 2, "white");
+
+            y = canvasHeight/2 + Math.cos(angle) * 100;
+            drawCircle(ctx, x, y, 2, "red");
+            
+            y = canvasHeight/2 - Math.sqrt(x%50) * 5;
+            drawCircle(ctx, x, y, 4, "yellow");
+
+            if (x > canvasWidth) x = 0;
+
+            // ctx.save();
+            // ctx.fillStyle = "black";
+            // ctx.globalAlpha = 1/fps;
+            // ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+            // ctx.restore();
             
             // let angle = 0;
             // let increase = Math.PI * 2/100;
