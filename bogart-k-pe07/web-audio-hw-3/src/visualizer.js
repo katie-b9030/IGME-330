@@ -125,7 +125,8 @@ const draw = (params = {}) => {
 			// data[i+2] is the blue channel
 			// data[i+3] is the alpha channel
 			data[i] = data[i + 1] = data[i + 2] = 0; // zero out the red and green and blue channels
-			data[i] = 255; // make the red channel 100% red
+			// data[i] = 255; // make the red channel 100% red
+			data[i+1] = data[i+2] = 125
 		} // end if
 
 		// invert?
