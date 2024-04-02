@@ -13,24 +13,59 @@ function initMap() {
         center: [-77.67454147338866, 43.08484339838443],
         zoom: 15.5
     });
+    map.on('style.load', () => {
+        // Insert the layer beneath any symbol layer.
+        const layers = map.getStyle().layers;
+        const labelLayerId = layers.find(
+            (layer) => layer.type === 'symbol' && layer.layout['text-field']
+        ).id;
+
+        // The 'building' layer in the Mapbox Streets
+        // vector tileset contains building height data
+        // from OpenStreetMap.
+        map.addLayer(
+            {
+                'id': 'add-3d-buildings',
+                'source': 'composite',
+                'source-layer': 'building',
+                'filter': ['==', 'extrude', 'true'],
+                'type': 'fill-extrusion',
+                'minzoom': 15,
+                'paint': {
+                    'fill-extrusion-color': '#aaa',
+
+                    // Use an 'interpolate' expression to
+                    // add a smooth transition effect to
+                    // the buildings as the user zooms in.
+                    'fill-extrusion-height': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'height']
+                    ],
+                    'fill-extrusion-base': [
+                        'interpolate',
+                        ['linear'],
+                        ['zoom'],
+                        15,
+                        0,
+                        15.05,
+                        ['get', 'min_height']
+                    ],
+                    'fill-extrusion-opacity': 0.6
+                }
+            },
+            labelLayerId
+        );
+    });
 }
 
 function addMarkersToMap() {
     for (const feature of geojson.features) {
-        // create a HTML element for each feature
-        const el = document.createElement('div');
-        el.className = 'marker';
-
-        // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .setPopup(
-                new mapboxgl.Popup({ offset: 25 }) // add popups
-                    .setHTML(
-                        `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-                    )
-            )
-            .addTo(map);
+        addMarker(feature.geometry.coordinates, feature.properties.title, feature.properties.description, "marker");
     };
 }
 
@@ -132,17 +167,28 @@ function loadMarkers() {
     console.log(geojson.features);
 }
 
-function flyTo(center = [0, 0]){
-    map.flyTo({center: center});
+function flyTo(center = [0, 0]) {
+    map.flyTo({ center: center });
 }
 
-function setZoomLevel(value=0){
+function setZoomLevel(value = 0) {
     map.setZoom(value);
 }
 
-function setPitchAndBearing(pitch=0, bearing=0){
+function setPitchAndBearing(pitch = 0, bearing = 0) {
     map.setPitch(pitch);
     map.setBearing(bearing);
 }
 
-export { initMap, loadMarkers, addMarkersToMap, flyTo, setZoomLevel, setPitchAndBearing };
+function addMarker(coordinates, title, description, className){
+    let el = document.createElement('div');
+    el.className = className;
+
+    new mapboxgl.Marker(el)
+        .setLngLat(coordinates)
+        .setPopup(new mapboxgl.Popup({offset: 25})
+        .setHTML('<h3>' + title + '</h3><p>' + description + '</p>'))
+        .addTo(map);
+}
+
+export { initMap, loadMarkers, addMarkersToMap, flyTo, setZoomLevel, setPitchAndBearing, addMarker };
