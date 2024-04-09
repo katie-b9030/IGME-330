@@ -44,26 +44,71 @@
   </nav>
 
   <!-- project -->
-      <div class="columns is-vcentered">
-        <div class="column">  
-          <div class="hero is-large has-background-warning-light p-2">
-            <div class="hero-head">
-              <p class="title">
+      <div class="columns is-vcentered has-background-warning">
+        <div class="column is-three-quarters">  
+          <div class="hero is-large p-2">
+            <div class="hero-head p-2 mb-2 has-background-warning-light">
+              <p class="title has-text-warning-dark has-text-weight-bold">
                 ???
               </p>
               <p class="subtitle">
                 ???
               </p>
-              <p class="body" style="float:left;width:50%">
-                This project is a cleaner, more refined and unique remake of the original audio-vizualizer, shown to the right.
-                It is designed so that the sunflowers resize themselves according to the center node of the audio graph, and the bars follow the path of every 16 nodes.
-              </p>
-              <img class="p-3" style="float:right;width:50%" src="media/original-av.png" alt="my original version of the audio vizualizer">
             </div>
-            <div class="hero-footer">Contact: klb9030@rit.edu</div>
+            <canvas width="800" height="400" class="has-background-warning-light p-2 is-rounded"></canvas>
+          </div>
+        </div>
+        <div class="column is-one-quarter">
+          <div class="hero is-large p-2">
+            <div id="filters">
+            <section class="has-background-warning-light p-2 is-rounded">
+              <span><label for="cb-highshelf">Highshelf Filter (Treble)</label><input type="checkbox" id="cb-highshelf"></span>
+              <span><label for="cb-lowshelf">Lowshelf Filter (Bass)</label><input type="checkbox" id="cb-lowshelf"></span>
+              <br>
+              <span><label for="cb-distortion">Distortion</label><input type="checkbox" id="cb-distortion"></span>
+              <span>0 <input type="range" min="0" max="100" value="0" id="slider-distortion"> 100</span>
+            </section>
+            </div>
+            <br>
+            <div id="controls">
+              <section class="has-background-warning-light p-2 is-rounded">
+                <button id="btn-play" data-playing="no"></button>
+                <button id="btn-fs">Full Screen</button>
+                <br>
+                <label>Track: 
+                  <select id="select-track">
+                    <option id="NAT" value="empty" selected>empty</option>
+                    <option id="PT" value="empty">empty</option>
+                    <option id="TPS" value="empty">empty</option>
+                  </select>
+                </label>
+          
+                <label>Vizualization: 
+                  <select id="select-vizualizer">
+                    <option value="frequency" selected>Frequency Data</option>
+                    <option value="waveform">Time Domain</option>
+                  </select>
+                </label>
+              </section>
+              <section class="has-background-warning-light p-2 is-rounded">
+                Volume: <input type="range" id="slider-volume" min="0" max="2" value="1" step="0.01">
+                <span id="label-volume">???</span>
+              </section>
+              <br>
+              <section class="has-background-warning-light p-2 is-rounded">
+                <span><input type="checkbox" id="cb-gradient" checked><label for="cb-gradient">Show Gradient</label></span>
+                <span><input type="checkbox" id="cb-bars" checked><label for="cb-bars">Show Bars</label></span>
+                <!-- <span><input type="checkbox" id="cb-circles" checked><label for="cb-circles">Show Circles</label></span> -->
+                <!-- we'll use this 4th checkbox soon! -->
+                <span><input type="checkbox" id="cb-noise"><label for="cb-noise">Show Noise</label></span>
+                <span><input type="checkbox" id="cb-invert"><label for="cb-invert">Invert Colors</label></span>
+                <span><input type="checkbox" id="cb-emboss"><label for="cb-emboss">Show Emboss</label></span>
+              </section>
+            </div>
           </div>
         </div>
       </div>
+      <div class="hero-footer">Contact: klb9030@rit.edu</div>
 
   <script src="src/hamburger.js"></script>
   <script src="./src/loader.js" type="module"></script>
