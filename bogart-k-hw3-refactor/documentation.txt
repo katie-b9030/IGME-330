@@ -1,0 +1,7 @@
+II. I stuck with the basic trebel and bass nodes to add to the audio routing graph.
+
+III. My sprite class name is SunflowerSprite, it draws a sunflower from the center and resizes it with the center audio value of the audioData.
+
+IV. My av-data.json file contains the required title, track-files, and track-names, as well as instructions on how to run the app.
+
+V. I improved my aesthetics by creating sunflowers and drawing better bars that resize from the center as the audio plays. I would say I deserve a 5/15 for improving my aesthetics.

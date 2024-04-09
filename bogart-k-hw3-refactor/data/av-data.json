@@ -1,0 +1,6 @@
+{
+    "title" : ["Sunflower Audio Visualizer"],
+    "track-files" : ["./media/New Adventure Theme.mp3","./media/Peanuts Theme.mp3","media/The Picard Song.mp3"],
+    "track-names" : ["New Adventure Theme","Peanuts Theme","The Picard Song"],
+    "instructions" : ["Press Play to get started.","Toggle checkboxes to change audio and visual effects.","Move sliders to change volume and distortion.","Use pulldowns to change tracks and visualization modes."]
+}
