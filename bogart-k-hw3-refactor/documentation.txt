@@ -5,3 +5,11 @@ III. My sprite class name is SunflowerSprite, it draws a sunflower from the cent
 IV. My av-data.json file contains the required title, track-files, and track-names, as well as instructions on how to run the app.
 
 V. I improved my aesthetics by creating sunflowers and drawing better bars that resize from the center as the audio plays. I would say I deserve a 5/15 for improving my aesthetics.
+
+
+HW-3 REFACTOR -----------------------------------------
+
+I coded in Typescript for this homework.
+    - I put the sunflower sprite into its own class file, the audio and main defaults into their own enum files, and the colorStops and drawParams into their own interface files.
+    - All variables, function parameters, and function return types in each file are strongly typed according to typescript standards as necessary.
+    - There are no errors or hints in any of the Typescript files

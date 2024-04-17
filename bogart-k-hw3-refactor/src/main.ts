@@ -19,10 +19,6 @@ const drawParams:DrawParams = {
   showEmboss: false,
 };
 
-// 1 - here we are faking an enumeration
-const DEFAULTS = Object.freeze({
-  sound1: "media/New Adventure Theme.mp3"
-});
 
 const init = () => {
   console.log("init called");
