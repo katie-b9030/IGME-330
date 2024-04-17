@@ -12,7 +12,7 @@ const getRandomColor = () => {
   return `rgba(${getByte()},${getByte()},${getByte()},1)`;
 };
 
-const getLinearGradient = (ctx:CanvasRenderingContext2D,startX:number,startY:number,endX:number,endY:number,colorStops: any) => {
+const getLinearGradient = (ctx:CanvasRenderingContext2D,startX:number,startY:number,endX:number,endY:number,colorStops:ColorStop[]) => {
   let lg = ctx.createLinearGradient(startX,startY,endX,endY);
   for(let stop of colorStops){
     lg.addColorStop(stop.percent,stop.color);

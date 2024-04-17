@@ -11,10 +11,9 @@ import * as utils from './utils';
 import * as audio from './audio';
 import * as visualizer from './visualizer';
 
-const drawParams = {
+const drawParams:DrawParams = {
   showGradient: true,
   showBars: true,
-  showCircles: true,
   showNoise: false,
   showInvert: false,
   showEmboss: false,

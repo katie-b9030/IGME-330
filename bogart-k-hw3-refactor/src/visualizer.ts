@@ -7,20 +7,12 @@
 	  - maybe a better name for this file/module would be *visualizer.js* ?
 */
 
-import { SunflowerSprite } from './SunflowerSprite';
+import { SunflowerSprite } from './classes/SunflowerSprite';
 import * as utils from './utils';
 
 let ctx: CanvasRenderingContext2D, canvasWidth: number, canvasHeight: number, gradient: CanvasGradient, analyserNode: AnalyserNode, audioData: Uint8Array;
 let vizualizeFrequency = true;
 let bigSunflower: SunflowerSprite, mediumSunflower: SunflowerSprite, smallSunflower: SunflowerSprite;
-
-interface DrawParams { 
-	showGradient: boolean,
-	showBars: boolean,
-	showNoise: boolean, 
-	showInvert: boolean, 
-	showEmboss: boolean
-}
 
 const setupCanvas = (canvasElement: HTMLCanvasElement, analyserNodeRef: AnalyserNode) => {
 	// create drawing context

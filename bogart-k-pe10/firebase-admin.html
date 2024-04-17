@@ -38,23 +38,18 @@
   const scoresRef = ref(db, 'scores');
 
   const scoresChanged = (snapshot) => {
+    let finalHtml = ``;
     snapshot.forEach(score => {
       const childKey = score.key;
       const childData = score.val();
       console.log(childKey,childData);
-    });
-  }
-
-  onValue(scoresRef,scoresChanged);
-
-  const scores = () => {
-    let finalHtml = ``;
-    childData.forEach(child =>{
-        let html = `<li>${child.userId} - ${child.game} - ${child.score}</li>`
-        finalHtml += html;
+      let html = `<li>${childData.userId} - ${childData.game} - ${childData.score}</li>`
+      finalHtml += html;
     });
     document.querySelector("#scoresList").innerHTML = finalHtml;
   }
+
+  onValue(scoresRef,scoresChanged);
 	
 </script>
 </body>
