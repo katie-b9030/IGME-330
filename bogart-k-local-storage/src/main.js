@@ -33,7 +33,7 @@ document.querySelector("#btn-add").addEventListener("click", () => {
 document.querySelector("#btn-clear").addEventListener("click", () => {
   items = [];
   storage.writeToLocalStorage("items", items);
-  showItems();
+  showItems(); 
 });
 
 // When the page loads:
